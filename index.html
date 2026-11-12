@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SafarPoint — Travel, Flights & Visa</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <div class="announcement">
+      Travel planning and visa guidance, all in one place.
+    </div>
+
+    <nav class="main-nav" aria-label="Main navigation">
+      <a class="brand" href="#home">SAFARPOINT<span>.</span></a>
+
+      <ul>
+        <li><a href="#book">Book a trip</a></li>
+        <li><a href="#routes">Bus routes</a></li>
+        <li><a href="#visa">Visa services</a></li>
+        <li><a href="#faqs">FAQs</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <a class="nav-booking-link" href="#book">Plan your journey</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <p>Travel with a plan</p>
+        <h1>Your next journey starts here.</h1>
+        <p>
+          Find flights, explore bus routes across Pakistan, and get help
+          preparing for your visa journey.
+        </p>
+        <a href="#book">Start planning</a>
+      </div>
+    </section>
+
+    <section id="book" class="booking-section">
+      <div class="section-heading">
+        <p>One simple place to begin</p>
+        <h2>Where would you like to go?</h2>
+      </div>
+
+      <div class="booking-tabs" role="tablist" aria-label="Choose a booking type">
+        <button type="button" class="booking-tab active" id="flight-tab" role="tab" aria-selected="true" aria-controls="flight-panel" data-booking-tab="flight"> Flights </button>
+        <button type="button" class="booking-tab" id="bus-tab" role="tab" aria-selected="false" aria-controls="bus-panel" data-booking-tab="bus"> Buses in Pakistan </button>
+      </div>
+
+      <div class="booking-panel" id="flight-panel" role="tabpanel" aria-labelledby="flight-tab">
+        <h3>Search flights</h3>
+        <p>Choose a route to or from Pakistan.</p>
+
+        <form id="flight-search-form">
+          <div>
+            <label for="flight-direction">Journey direction</label>
+            <select id="flight-direction" name="direction" required>
+              <option value="">Choose a direction</option>
+              <option value="from-pakistan">Pakistan to another country</option>
+              <option value="to-pakistan">Another country to Pakistan</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="flight-from">From</label>
+            <select id="flight-from" name="from" required>
+              <option value="">Select departure city or country</option>
+              <optgroup label="Pakistan">
+                <option value="Lahore">Lahore</option>
+                <option value="Islamabad">Islamabad</option>
+                <option value="Karachi">Karachi</option>
+                <option value="Peshawar">Peshawar</option>
+                <option value="Sialkot">Sialkot</option>
+              </optgroup>
+              <optgroup label="Other countries">
+                <option value="Dubai">Dubai, UAE</option>
+                <option value="Istanbul">Istanbul, Türkiye</option>
+                <option value="London">London, UK</option>
+                <option value="Doha">Doha, Qatar</option>
+                <option value="Jeddah">Jeddah, Saudi Arabia</option>
+                <option value="Kuala Lumpur">Kuala Lumpur, Malaysia</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <div>
+            <label for="flight-to">To</label>
+            <select id="flight-to" name="to" required>
+              <option value="">Select destination city or country</option>
+              <optgroup label="Pakistan">
+                <option value="Lahore">Lahore</option>
+                <option value="Islamabad">Islamabad</option>
+                <option value="Karachi">Karachi</option>
+                <option value="Peshawar">Peshawar</option>
+                <option value="Sialkot">Sialkot</option>
+              </optgroup>
+              <optgroup label="Other countries">
+                <option value="Dubai">Dubai, UAE</option>
+                <option value="Istanbul">Istanbul, Türkiye</option>
+                <option value="London">London, UK</option>
+                <option value="Doha">Doha, Qatar</option>
+                <option value="Jeddah">Jeddah, Saudi Arabia</option>
+                <option value="Kuala Lumpur">Kuala Lumpur, Malaysia</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <div>
+            <label for="flight-trip-type">Trip type</label>
+            <select id="flight-trip-type" name="trip-type" required>
+               <option value="one-way">One-way</option>
+               <option value="round-trip">Round-trip</option>
+             </select>
+         </div>
+
+          <div>
+            <label for="flight-date">Departure date</label>
+            <input type="date" id="flight-date" name="date" required>
+          </div>
+
+          <div id="return-date-field" hidden>
+            <label for="flight-return-date">Return date</label>
+            <input type="date" id="flight-return-date" name="return-date">
+         </div>
+
+          <div>
+            <label for="flight-passengers">Passengers</label>
+            <select id="flight-passengers" name="passengers" required>
+              <option value="1">1 passenger</option>
+              <option value="2">2 passengers</option>
+              <option value="3">3 passengers</option>
+              <option value="4">4 passengers</option>
+              <option value="5">5 passengers</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="flight-class">Travel class</label>
+            <select id="flight-class" name="class" required>
+              <option value="economy">Economy</option>
+              <option value="business">Business</option>
+            </select>
+          </div>
+
+          <button type="submit">Find flights</button>
+        </form>
+      </div>
+
+      <div class="booking-panel" id="bus-panel" role="tabpanel" aria-labelledby="bus-tab" hidden>
+        <h3>Search bus routes in Pakistan</h3>
+        <p>Choose an intercity route for your trip.</p>
+
+        <form id="bus-search-form">
+          <div>
+            <label for="bus-route">Route</label>
+            <select id="bus-route" name="route" required>
+              <option value="">Choose a route</option>
+              <optgroup label="Punjab — within the province">
+                <option value="Lahore to Faisalabad">Lahore to Faisalabad</option>
+                <option value="Lahore to Sialkot">Lahore to Sialkot</option>
+                <option value="Lahore to Multan">Lahore to Multan</option>
+                <option value="Islamabad to Lahore">Islamabad to Lahore</option>
+              </optgroup>
+              <optgroup label="Interprovincial and tourist routes">
+                <option value="Lahore to Swat">Lahore to Swat</option>
+                <option value="Lahore to Murree">Lahore to Murree</option>
+                <option value="Islamabad to Swat">Islamabad to Swat</option>
+                <option value="Karachi to Hyderabad">Karachi to Hyderabad</option>
+                <option value="Lahore to Karachi">Lahore to Karachi</option>
+                <option value="Islamabad to Peshawar">Islamabad to Peshawar</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <div>
+            <label for="bus-date">Travel date</label>
+            <input type="date" id="bus-date" name="date" required>
+          </div>
+
+          <div>
+            <label for="bus-passengers">Passengers</label>
+            <select id="bus-passengers" name="passengers" required>
+              <option value="1">1 passenger</option>
+              <option value="2">2 passengers</option>
+              <option value="3">3 passengers</option>
+              <option value="4">4 passengers</option>
+              <option value="5">5 passengers</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="bus-class">Seat type</label>
+            <select id="bus-class" name="class" required>
+              <option value="standard">Standard</option>
+              <option value="executive">Executive</option>
+              <option value="business">Business class</option>
+            </select>
+          </div>
+
+          <button type="submit">Find buses</button>
+        </form>
+      </div>
+
+      <section class="booking-summary" id="booking-summary" aria-live="polite">
+        <h3>Your trip summary</h3>
+        <p id="trip-summary">Your selected trip details will appear here.</p>
+        <p>Estimated fare: <strong id="trip-fare">Rs. 0</strong></p>
+      </section>
+
+      <section class="traveler-details" id="traveler-details">
+        <h3>Traveler and payment details</h3>
+
+        <form id="payment-form">
+          <div>
+            <label for="traveler-name">Full name</label>
+            <input type="text" id="traveler-name" name="name" autocomplete="name" required>
+          </div>
+
+          <div>
+            <label for="traveler-email">Email address</label>
+            <input type="email" id="traveler-email" name="email" autocomplete="email" required>
+          </div>
+
+          <div>
+            <label for="traveler-phone">Phone number</label>
+            <input type="tel" id="traveler-phone" name="phone" autocomplete="tel" required>
+          </div>
+
+          <div>
+            <label for="payment-method">Payment method</label>
+            <select id="payment-method" name="payment" required>
+              <option value="">Choose a payment method</option>
+              <option value="card">Debit or credit card — demo</option>
+              <option value="bank-transfer">Bank transfer — demo</option>
+              <option value="cash">Pay at the office — demo</option>
+            </select>
+          </div>
+
+          <button type="submit">Confirm booking</button>
+        </form>
+
+        <p id="booking-message" role="status" aria-live="polite"></p>
+      </section>
+    </section>
+
+    <section id="routes" class="popular-routes">
+      <div class="section-heading">
+        <p>Explore Pakistan</p>
+        <h2>Popular bus journeys</h2>
+      </div>
+
+      <div class="route-grid">
+        <article>
+          <h3>Lahore to Faisalabad</h3>
+          <p>A convenient intercity journey within Punjab.</p>
+        </article>
+
+        <article>
+          <h3>Lahore to Sialkot</h3>
+          <p>Travel between two major cities in Punjab.</p>
+        </article>
+
+        <article>
+          <h3>Islamabad to Lahore</h3>
+          <p>A popular connection between the capital and Punjab.</p>
+        </article>
+
+        <article>
+          <h3>Lahore to Murree</h3>
+          <p>Plan a road trip to the hills of northern Punjab.</p>
+        </article>
+
+        <article>
+          <h3>Lahore to Swat</h3>
+          <p>Explore a scenic route towards Khyber Pakhtunkhwa.</p>
+        </article>
+
+        <article>
+          <h3>Karachi to Hyderabad</h3>
+          <p>A well-travelled route within Sindh.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="visa" class="visa-section">
+      <div>
+        <p>Visa guidance</p>
+        <h2>Prepare for your next destination.</h2>
+        <p>
+          Get help understanding document checklists, application steps,
+          and appointment preparation for your destination.
+        </p>
+        <a href="#contact">Request a consultation</a>
+      </div>
+
+      <div class="visa-services">
+        <article>
+          <h3>Document guidance</h3>
+          <p>Understand the documents commonly requested for your application.</p>
+        </article>
+
+        <article>
+          <h3>Application support</h3>
+          <p>Get help organizing your information before you apply.</p>
+        </article>
+
+        <article>
+          <h3>Travel planning</h3>
+          <p>Coordinate your trip planning with your visa preparation.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="how-it-works">
+      <div class="section-heading">
+        <p>Simple steps</p>
+        <h2>How booking works</h2>
+      </div>
+
+      <ol>
+        <li>Choose a flight or bus journey.</li>
+        <li>Enter traveler contact details.</li>
+        <li>Select a demo payment method.</li>
+        <li>Review the booking confirmation.</li>
+      </ol>
+    </section>
+
+    <section class="faq-section" id="faqs">
+        <div class="section-heading">
+          <p>Quick answers</p>
+          <h2>Frequently asked questions</h2>
+       </div>
+
+       <details>
+         <summary>Are the flight and bus fares live prices?</summary>
+         <p>No. The fares shown on this demo website are estimates. Availability and final prices need to be confirmed with the travel provider.</p>
+       </details>
+
+       <details>
+         <summary>Will this website charge my card?</summary>
+         <p>No. This is a demo booking flow. It does not collect card details or process payments.</p>
+       </details>
+
+       <details>
+         <summary>Can I search flights both to and from Pakistan?</summary>
+         <p>Yes. Choose the journey direction, then select the departure and destination locations.</p>
+       </details>
+
+       <details>
+         <summary>Can I ask for visa guidance?</summary>
+         <p>Yes. Use the contact section to request a consultation. Visa requirements should be confirmed for your destination before you apply.</p>
+       </details>
+
+       <details>
+         <summary>Which bus journeys can I explore?</summary>
+         <p>The demo includes selected routes within Pakistan, such as Lahore to Faisalabad, Lahore to Murree, and Islamabad to Lahore.</p>
+        </details>
+    </section>
+
+    <section id="contact" class="contact-section">
+      <p>Need a hand with your plans?</p>
+      <h2>Talk to our travel team.</h2>
+
+      <div>
+        <h3>Email</h3>
+        <a href="mailto:salmanhayat592@gmail.com">salmanhayat592@gmail.com</a>
+      </div>
+
+      <div>
+        <h3>Phone</h3>
+        <a href="tel:+923274226853">+92 3274226853</a>
+      </div>
+
+      <div>
+        <h3>Office hours</h3>
+        <p>Monday–Saturday, 10:00 AM–6:00 PM</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a href="#home">SAFARPOINT.</a>
+    <p>Travel planning and visa guidance.</p>
+    <p>&copy; 2026 SafarPoint Travel &amp; Visa. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
